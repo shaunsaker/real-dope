@@ -1,22 +1,22 @@
 CURRENT TODO:
 
-Deal page space needs centering
-uncaught at loadGame TypeError: Cannot read property 'currentGame' of null
-*A Login let me go through to home with short password
-Signup and login need h3s to display clearly
-*B Non existent user was already signed up? - Possible localStorage issue (didn't occur with different user)
 Need 'Game saved' display
 Firebase UserAuth and database don't match - rel to *A and *B
 Signout didn't display loader
-When saved, didn't save currentDrugs - try reproduce
-
 Page Transitions
+
+TESTING
+
+New user sign up, save game, load Game
+Existing user login, save game, load game
+Existing user login, load game
 
 FUTURE TODO/ENHANCEMENTS:
 
 If more than 3 drugs available, let user know that they can scroll
 Animate icon in info-container when values changed
 Finances page - will you ever deposit all? Withdraw all?
+Icon in game saved message
 Buttons move other elements when clicked
 Splash logo anim buggy
 React Native

@@ -28,6 +28,20 @@ a:hover {
     }
 }
 
+.game-page {
+    & .alert-danger {
+        background-color: $darkerGrey;
+
+        & p {
+            & .icon {
+                font-size: 2rem;
+                color: $lightPrimary;
+                margin-right: 4px;
+            }
+        }
+    }
+}
+
 .page-footer {
     & .btn {
         min-width: 80px;

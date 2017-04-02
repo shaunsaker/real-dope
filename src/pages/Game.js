@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+import { Motion, spring, presets } from 'react-motion';
+import CheckIcon from 'react-icons/lib/md/check-circle';
 
 // Components
 import Header from '../components/Header';
@@ -22,7 +24,8 @@ export class Game extends React.Component {
 
         this.saveGame = this.saveGame.bind(this);
         this.state = {
-            loading: false
+            loading: false,
+            saveMessage: false
         }
     }
 
@@ -87,6 +90,19 @@ export class Game extends React.Component {
         if (nextProps.fighting) {
             browserHistory.push('/game/duel');
         }
+
+        if (nextProps.apiMessage && nextProps.apiMessage === "Game saved.") {
+            this.setState({
+                saveMessage: true
+            });
+
+            // Display Game Saved Message for 2 seconds
+            setTimeout(() => {
+                this.setState({
+                    saveMessage: false
+                })
+            }, 2000);
+        }
     }
 
     componentDidMount() {
@@ -97,7 +113,7 @@ export class Game extends React.Component {
 
     render() {
         return (
-            <div className="page bg-primary">
+            <div className="page game-page bg-primary">
                 {
                     <div className="flex-vt flex-stretch">
                         <Header class='headerGame position-relative flex-hz flex-space-between'>
@@ -120,6 +136,24 @@ export class Game extends React.Component {
                         <Footer
                             handleClick={this.saveGame}
                             apiLoading={this.props.apiLoading} />
+                        { this.state.saveMessage ?
+                            <Motion
+                                defaultStyle={{ height: 0, opacity: 0 }}
+                                style={{ height: spring(64, presets.stiff), opacity: spring(1, presets.stiff) }}>
+                                {(style) =>
+                                    <div
+                                        style={{ opacity: style.opacity, height: style.height }}
+                                        className="alert alert-danger flex-vt-normal">
+                                        <p className="text-light flex-hz flex-1 flex-center">
+                                            <span className="icon"><CheckIcon /></span>
+                                            { this.props.apiMessage }
+                                        </p>
+                                    </div>
+                                }
+                            </Motion>
+                            :
+                            <div></div>
+                        }
                     </div>
                 }
             </div>

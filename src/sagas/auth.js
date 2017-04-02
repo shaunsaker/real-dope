@@ -7,6 +7,7 @@ export function* signUpUser(action) {
 
     // Check if we signed up successfully or return error
     if (response) {
+        console.log(response);
         if (response.success) {
             yield put({
                 type: 'main.signIn'
@@ -26,6 +27,7 @@ export function* signInUser(action) {
 
     // Check if we signed in successfully or return error
     if (response) {
+        console.log(response, action.values);
         if (response.success) {
             yield put({
                 type: 'main.signIn'

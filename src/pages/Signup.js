@@ -143,11 +143,15 @@ export class Signup extends React.Component {
 						</Header>
 						{ this.renderAuthenticationError() }
 					</div>
-					<Link to="/login" className="signup-login-button text-center">
-						<Button bsSize="sm" bsStyle="default">
-							<p className="text-dark">Login Instead?</p>
-						</Button>
-					</Link>
+					{ !this.props.authenticationError ?
+						<Link to="/login" className="signup-login-button text-center">
+							<Button bsSize="sm" bsStyle="default">
+								<p className="text-dark">Login Instead?</p>
+							</Button>
+						</Link>
+						:
+						<div></div>
+					}
 
 					<div className="flex-1 flex-vt-normal flex-center">
 						<form 

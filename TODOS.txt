@@ -1,7 +1,6 @@
 CURRENT TODO:
 
-Responsiveness
-    Portrait orientations
+Nothing yet!
 
 TESTING
 

@@ -795,3 +795,14 @@ input:-webkit-autofill:active {
         border: 0;
     }
 }
+
+// Support for ridiculous use case of Landscape Mode on a mobile device
+@media (max-height: 480px) {
+    .page {
+        overflow: auto;
+
+        & > .flex-vt {
+                height: auto;
+        }
+    }
+}

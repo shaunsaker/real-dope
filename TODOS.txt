@@ -1,10 +1,5 @@
 CURRENT TODO:
 
-About Page  
-    Logo
-    Version number
-    Report a bug
-Bug Reporting Page
 Responsiveness
     Portrait orientations
 

@@ -101,6 +101,13 @@ export class Home extends React.Component {
               </Link>
             </div>
             <div className="button-container">
+              <Link to="/about">
+                <Button bsSize="lg" bsStyle="default">
+                  <p className="text-secondary text-dark">About</p>
+                </Button>
+              </Link>
+            </div>
+            <div className="button-container">
               <Button bsSize="lg" bsStyle="default" onClick={this.signOut}>
                 <p className="text-secondary text-dark">Sign Out</p>
             </Button>

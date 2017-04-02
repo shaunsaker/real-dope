@@ -1,4 +1,5 @@
 import React from 'react';
+import DownArrowIcon from 'react-icons/lib/md/arrow-drop-down';
 
 export default class ElementsHeader extends React.Component
 {
@@ -32,7 +33,14 @@ export default class ElementsHeader extends React.Component
 				<div className="flex-1">
 					<p>Price</p>
 				</div>
-				<div className="flex-1"></div>
+				<div className="flex-1 flex-hz flex-center">
+					{
+						this.props.scrollable ?
+						<span className="icon down-arrow-icon"><DownArrowIcon /></span>
+						:
+						<span />
+					}
+				</div>
 				{
 					this.props.deal ?
 					<div className="flex-2"></div>

@@ -534,6 +534,12 @@ input:-webkit-autofill:active {
     & .flex-1 {
         overflow: auto;
     }
+
+    & .drugsHeader {
+        & .down-arrow-icon {
+            margin-left: 16px;
+        }
+    }
 }
 
 .footer {

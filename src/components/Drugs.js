@@ -55,7 +55,7 @@ export class Drugs extends React.Component
 	{
 		return (
 			<div className="drugs flex-6 flex-vt flex-stretch row">
-				<ElementsHeader text="No." deal={false}/>
+				<ElementsHeader text="No." deal={false} scrollable={this.props.drugsAvailable.length > 3}/>
 				<div className="game-drugs flex-1">
 					{this.props.drugsAvailable.map((drug, index) => {
 						return (
@@ -63,7 +63,7 @@ export class Drugs extends React.Component
 						);
 					})}
 				</div>
-				<ElementsHeader text="No." deal={false}/>
+				<ElementsHeader text="No." deal={false} scrollable={this.props.drugsCarried.length > 3}/>
 				<div className="player-drugs flex-1">
 					{
 						this.props.drugsCarried.length === 0 ?

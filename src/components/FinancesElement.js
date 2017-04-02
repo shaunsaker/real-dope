@@ -33,7 +33,7 @@ export default class FinancesElement extends React.Component {
 					{
 						this.props.handlePayAll ?
 							<Button bsStyle="primary" bsSize="small" onClick={this.props.handlePayAll}>
-								<p className="text-secondary text-light">{ this.props.payLoanMax ? 'Max' : 'All'}</p>
+								<p className="text-secondary text-light">Max</p>
 							</Button>
 							:
 							<div></div>

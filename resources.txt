@@ -1,7 +1,5 @@
 CURRENT TODO:
 
-Animate icon in info-container when values changed
-Finances page - will you ever deposit all? Withdraw all?
 Buttons move other elements when clicked
 Splash logo anim buggy
 
@@ -13,4 +11,5 @@ Existing user login, load game
 
 FUTURE TODO/ENHANCEMENTS:
 
+Animate icon in info-container when values changed
 React Native

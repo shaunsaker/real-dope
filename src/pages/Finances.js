@@ -18,7 +18,6 @@ export class Finances extends React.Component {
 
     this.payBank = this.payBank.bind(this);
     this.withdrawBank = this.withdrawBank.bind(this);
-    this.payBankAll = this.payBankAll.bind(this);
     this.payLoan = this.payLoan.bind(this);
     this.payLoanAll = this.payLoanAll.bind(this);
     this.makeLoan = this.makeLoan.bind(this);
@@ -122,11 +121,6 @@ export class Finances extends React.Component {
     }
   }
 
-  payBankAll() {
-    const amount = this.props.finances.cash;
-    this.payBank(null, amount);
-  }
-
   payLoan(event, amount) {
     const inputAmount = event ? Number(event.target.previousSibling.value) : amount;
     if (inputAmount > 0) {
@@ -186,7 +180,7 @@ export class Finances extends React.Component {
               <UserError />
             </div>
           </div>
-          <FinancesElement title="Bank" subtitle="Deposit" handleClick={this.payBank} handleWithdraw={this.withdrawBank} handlePayAll={this.payBankAll} />
+          <FinancesElement title="Bank" subtitle="Deposit" handleClick={this.payBank} handleWithdraw={this.withdrawBank} />
           <FinancesElement title="Loan Repayment" subtitle="Pay" payLoanMax={this.payLoanMax} handleClick={this.payLoan} handlePayAll={this.payLoanAll} />
           <FinancesElement title="Make Loan" subtitle="Loan" handleClick={this.makeLoan} />
           <Link to="/game" className="page-footer flex-vt-normal flex-center">

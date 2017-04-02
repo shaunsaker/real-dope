@@ -88,13 +88,38 @@ export class Finances extends React.Component {
   }
 
   payBank(event, amount) {
-    const inputAmount = event ? Number(event.target.parentNode.previousSibling.value) : amount;
-    this.handleFinances("payBank", inputAmount);
+    const inputAmount = event ? Number(event.target.previousSibling.value) : amount;
+    if (inputAmount > 0) {
+      this.handleFinances("payBank", inputAmount);
+    }
+    else {
+      this.props.dispatch({
+        type: 'main.userErrorNegative'
+      });
+
+      // reset form inputs
+      [...document.getElementsByTagName("input")].forEach(function (input) {
+        input.value = "";
+      });
+    }
   }
 
   withdrawBank(event, amount) {
-    const inputAmount = event ? Number(event.target.parentNode.previousSibling.previousSibling.value) * -1 : amount;
-    this.handleFinances("payBank", inputAmount, true);
+
+    const inputAmount = event ? Number(event.target.previousSibling.previousSibling.value) : amount;
+    if (inputAmount > 0) {
+      this.handleFinances("payBank", inputAmount * -1, true);
+    }
+    else {
+      this.props.dispatch({
+        type: 'main.userErrorNegative'
+      });
+
+      // reset form inputs
+      [...document.getElementsByTagName("input")].forEach(function (input) {
+        input.value = "";
+      });
+    }
   }
 
   payBankAll() {
@@ -103,8 +128,20 @@ export class Finances extends React.Component {
   }
 
   payLoan(event, amount) {
-    const inputAmount = event ? Number(event.target.parentNode.previousSibling.value) : amount;
-    this.handleFinances("payLoan", inputAmount);
+    const inputAmount = event ? Number(event.target.previousSibling.value) : amount;
+    if (inputAmount > 0) {
+      this.handleFinances("payLoan", inputAmount);
+    }
+    else {
+      this.props.dispatch({
+        type: 'main.userErrorNegative'
+      });
+
+      // reset form inputs
+      [...document.getElementsByTagName("input")].forEach(function (input) {
+        input.value = "";
+      });
+    }
   }
 
   payLoanAll() {
@@ -113,8 +150,20 @@ export class Finances extends React.Component {
   }
 
   makeLoan(event) {
-    const inputAmount = Number(event.target.parentNode.previousSibling.value);
-    this.handleFinances("makeLoan", inputAmount);
+    const inputAmount = Number(event.target.previousSibling.value);
+    if (inputAmount > 0) {
+      this.handleFinances("makeLoan", inputAmount);
+    }
+    else {
+      this.props.dispatch({
+        type: 'main.userErrorNegative'
+      });
+
+      // reset form inputs
+      [...document.getElementsByTagName("input")].forEach(function (input) {
+        input.value = "";
+      });
+    }
   }
 
   render() {

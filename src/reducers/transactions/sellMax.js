@@ -21,7 +21,7 @@ export default function sellMax(new_state, action)
         quantity: maxQuantity
     }
 
-    new_state = buyDrugs(new_state, action);
+    new_state = buyDrugs(new_state, action, true);
 
 	return new_state;
 }

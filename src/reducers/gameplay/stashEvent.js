@@ -18,7 +18,7 @@ export default function stashEvent(new_state, action)
 
     if ((space.total - space.used) >= amount) {
         let checker;
-        let playerDrugs = new_state.currentGame.currentDrugs;
+        let playerDrugs = new_state.currentGame.currentDrugs || [];
 
         for (let i = 0; i < playerDrugs.length; i++) {
 

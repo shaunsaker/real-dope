@@ -1,6 +1,11 @@
 CURRENT TODO:
 
-Nothing yet!
+Clothing display looks weird with text-wrap
+
+MONITOR
+
+Seeing continue game on home screen as a new user (Only occurs on /game reload)
+New user logs in and goes through to home screen even after receiving error from Firebase
 
 TESTING
 
@@ -10,4 +15,5 @@ FUTURE TODO/ENHANCEMENTS:
 
 Animate icon in info-container when values changed
 Buttons move other elements when clicked
+Leaderboard!
 React Native

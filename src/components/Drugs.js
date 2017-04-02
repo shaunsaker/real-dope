@@ -86,19 +86,26 @@ export class Drugs extends React.Component
 function mapStateToProps(state){
 	const drugsAvailable = state.main.status.drugsDisplayed;
 	const drugStore = state.main.game.drugs;
-	let drugsCarried = JSON.stringify(state.main.currentGame.currentDrugs); 
-	let copyDrugsCarried = JSON.parse(drugsCarried);
-	let temp = JSON.parse(drugsCarried);
-	let index;
-	let drugName;
+	let drugsCarried;
+	
+	if (state.main.currentGame.currentDrugs) {
+		drugsCarried = JSON.stringify(state.main.currentGame.currentDrugs); 
+		let copyDrugsCarried = JSON.parse(drugsCarried);
+		let temp = JSON.parse(drugsCarried);
+		let index;
+		let drugName;
 
-	for (let i = 0; i < copyDrugsCarried.length; i++) {
-		index = copyDrugsCarried[i].name;
-		drugName = drugStore[index].name;
-		temp[i]['index'] = temp[i].name;
-		temp[i].name = drugName;
+		for (let i = 0; i < copyDrugsCarried.length; i++) {
+			index = copyDrugsCarried[i].name;
+			drugName = drugStore[index].name;
+			temp[i]['index'] = temp[i].name;
+			temp[i].name = drugName;
+		}
+		drugsCarried = temp;
 	}
-	drugsCarried = temp;
+	else {
+		drugsCarried = [];
+	}
 
     return({
     	drugsCarried,

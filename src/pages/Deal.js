@@ -29,7 +29,7 @@ export class Deal extends React.Component {
   static get propTypes() {
     return {
       drug: React.PropTypes.object.isRequired,
-      drugsCarried: React.PropTypes.array.isRequired,
+      drugsCarried: React.PropTypes.array,
       userError: React.PropTypes.bool.isRequired
     };
   }
@@ -205,7 +205,7 @@ function mapStateToProps(state) {
       quantity: drug.quantity,
       price: drug.price
     },
-    drugsCarried: state.main.currentGame.currentDrugs,
+    drugsCarried: state.main.currentGame.currentDrugs || [],
     userError: state.main.status.userError.active
   });
 }

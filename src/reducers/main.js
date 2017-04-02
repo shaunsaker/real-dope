@@ -13,6 +13,7 @@ import apiSuccess from './api/apiSuccess';
 import apiError from './api/apiError';
 import apiLoadGame from './api/apiLoadGame';
 import toggleApiLoaded from './api/toggleApiLoaded';
+import resetApiMessage from './api/resetApiMessage';
 
 // Gameplay reducers
 import newGame from './gameplay/newGame';
@@ -91,6 +92,13 @@ class reducerClass {
 
         return new_state;
     }
+
+    static resetApiMessage(new_state, action) {
+
+        new_state = resetApiMessage(new_state, action);
+
+        return new_state;
+    }  
 
     static signIn(new_state, action) {
 

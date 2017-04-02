@@ -100,7 +100,10 @@ export class Game extends React.Component {
             setTimeout(() => {
                 this.setState({
                     saveMessage: false
-                })
+                });
+                this.props.dispatch({
+                    type: 'main.resetApiMessage'
+                });
             }, 2000);
         }
     }

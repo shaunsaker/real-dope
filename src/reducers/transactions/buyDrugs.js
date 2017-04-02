@@ -6,12 +6,12 @@ import userErrorNoSpace from '../usererrors/userErrorNoSpace';
 import userErrorQuantity from '../usererrors/userErrorQuantity';
 import resetUserError from '../usererrors/resetUserError';
 
-export default function buyDrugs(new_state, action) {
+export default function buyDrugs(new_state, action, sellMax) {
     let foundDrug = false;
     let i;
 
     const drugsDisplayed = new_state.status.drugsDisplayed;
-    const playerDrugs = new_state.currentGame.currentDrugs;
+    const playerDrugs = new_state.currentGame.currentDrugs || [];
     let tooMuch = false;
 
     // in the sell case
@@ -19,7 +19,7 @@ export default function buyDrugs(new_state, action) {
         for (let i = 0; i < playerDrugs.length; i++) {
 
             // see how much of the drug the player has, if selling more than has, set tooMuch to true
-            if (playerDrugs[i].name === action.name && Math.abs(action.quantity) > playerDrugs[i].quantity) {
+            if (playerDrugs[i].name === action.name && Math.abs(action.quantity) >= playerDrugs[i].quantity) {
                 tooMuch = true;
             }
         }
@@ -40,7 +40,7 @@ export default function buyDrugs(new_state, action) {
             if (drugsDisplayed[i].name === action.name || Number(drugsDisplayed[i].index) === Number(action.name)) {
 
                 // Check if the input amount is less than the quantity on offer
-                if ((Math.abs(action.quantity) <= drugsDisplayed[i]['quantity']) && !tooMuch) { // in sell case, this needs to be compared against what the player owns
+                if (((Math.abs(action.quantity) <= drugsDisplayed[i]['quantity']) && !tooMuch) || sellMax) { // in sell case, this needs to be compared against what the player owns
                     foundDrug = true;
 
                     const drugPrice = drugsDisplayed[i]['price'];

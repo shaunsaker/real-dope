@@ -7,7 +7,7 @@ export default function travelCity(new_state, action)
 
     new_state.currentGame.currentLocation.city = action.city;
     new_state.currentGame.currentLocation.suburb = 0;
-    new_state.currentGame.daysLeft = new_state.currentGame.daysLeft -= 2;
+    new_state.currentGame.daysLeft = new_state.currentGame.daysLeft -= 1;
     new_state.status.travelled = true;
 
     return new_state;

@@ -71,6 +71,18 @@ a {
     & .clothing, .space {
         align-self: center;
     }
+
+    & .info-container {
+        & .clothing {
+            & .icon {
+                margin-right: 12px;
+            }
+
+            & p {
+                white-space: nowrap;
+            }
+        }
+    }
 }
 
 .input-pages {

@@ -15,7 +15,7 @@ export class Clothing extends React.Component
 	render()
 	{
 		return (
-			<div className="clothing flex-hz col-xs-4 flex-space-between padding-large">
+			<div className="clothing flex-hz col-xs-4 padding-large">
 				<span className="icon"><UserIcon /></span>
 	        	<p>{this.props.clothing}</p>
         	</div>

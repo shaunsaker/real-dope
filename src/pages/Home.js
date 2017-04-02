@@ -94,14 +94,11 @@ export class Home extends React.Component {
               </Button>
             </div>
             <div className="button-container">
-              <Button bsSize="lg" bsStyle="default">
-                <p className="text-secondary text-dark">Options</p>
-              </Button>
-            </div>
-            <div className="button-container">
-              <Button bsSize="lg" bsStyle="default">
-                <p className="text-secondary text-dark">How to Play</p>
-              </Button>
+              <Link to="/help">
+                <Button bsSize="lg" bsStyle="default">
+                  <p className="text-secondary text-dark">How to Play</p>
+                </Button>
+              </Link>
             </div>
             <div className="button-container">
               <Button bsSize="lg" bsStyle="default" onClick={this.signOut}>

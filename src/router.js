@@ -15,6 +15,7 @@ import Clothing from "./pages/Clothing";
 import Hospital from "./pages/Hospital";
 import Finances from "./pages/Finances";
 import Duel from "./pages/Duel";
+import Help from "./pages/Help";
 import NotFound from "./pages/NotFound";
 import RequireAuth from "./components/RequireAuth";
 import RequireGameInit from "./components/RequireGameInit";
@@ -27,6 +28,7 @@ const router = (
       <Route path = "/home" component={RequireAuth(Home)} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
+      <Route path="/help" component={RequireAuth(Help)} />
       <Route path="/game" component={RequireAuth(Game)} />
       <Route path="/game/status" component={RequireAuth(RequireGameInit(Status))} />
       <Route path="/game/deal" component={RequireAuth(RequireGameInit(Deal))} />

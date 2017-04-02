@@ -1,7 +1,6 @@
 CURRENT TODO:
 
-Buttons move other elements when clicked
-Splash logo anim buggy
+
 
 TESTING
 
@@ -12,4 +11,5 @@ Existing user login, load game
 FUTURE TODO/ENHANCEMENTS:
 
 Animate icon in info-container when values changed
+Buttons move other elements when clicked
 React Native

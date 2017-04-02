@@ -31,8 +31,8 @@ export class Hospital extends React.Component {
   buyHealth (event)
   {
     const health = {
-      points: Number(event.target.parentNode.getAttribute("data-points")),
-      price: Number(event.target.parentNode.getAttribute("data-cost"))
+      points: Number(event.target.getAttribute("data-points")),
+      price: Number(event.target.getAttribute("data-cost"))
     }
     this.props.dispatch({
       type: 'main.buyHealth',
@@ -53,16 +53,18 @@ export class Hospital extends React.Component {
     return (
       <div className="page hospital-page bg-primary">
         <div className="flex-vt flex-stretch flex-space-between">
-          <Header class='headerGame position-relative flex-hz flex-space-between'>
-            <p>Hospital</p>
-          </Header>
-          <div className="row">
-            <div className="info-container">
-              <FinancesDisplay />
-              <div className="flex-hz flex-center">
-                <Health />
+          <div>
+            <Header class='headerGame position-relative flex-hz flex-space-between'>
+              <p>Hospital</p>
+            </Header>
+            <div className="row">
+              <div className="info-container">
+                <FinancesDisplay />
+                <div className="flex-hz flex-center">
+                  <Health />
+                </div>
+                <UserError />
               </div>
-              <UserError />
             </div>
           </div>
           <div className="button-group flex-vt-normal flex-center row">

@@ -2,8 +2,6 @@ CURRENT TODO:
 
 Click events on buttons firing eratically - target correct elements
 
-
-
 Reloading on deal page
 Health buttons weren't working
 Health let me eventually buy when I didn't have the cash
@@ -22,7 +20,9 @@ Page Transitions
 Button pushing => heights changing - quite irritating
 When saved, didn't save currentDrugs - try reproduce
 
-FUTURE TODO:
+FUTURE TODO/ENHANCEMENTS:
 
 If more than 3 drugs available, let user know that they can scroll
+Animate icon in info-container when values changed
+Finances page - will you ever deposit all? Withdraw all?
 React Native

@@ -1,13 +1,5 @@
 CURRENT TODO:
 
-Click events on buttons firing eratically - target correct elements
-
-News event when I clicked New Game
-Reloading on deal page
-Health buttons weren't working
-Health let me eventually buy when I didn't have the cash
-Clothing buy isn't working
-Weapon buy isn't working (saw ammo flicker)
 Deal page space needs centering
 uncaught at loadGame TypeError: Cannot read property 'currentGame' of null
 *A Login let me go through to home with short password
@@ -26,4 +18,6 @@ FUTURE TODO/ENHANCEMENTS:
 If more than 3 drugs available, let user know that they can scroll
 Animate icon in info-container when values changed
 Finances page - will you ever deposit all? Withdraw all?
+Reloading on deal page
+Buttons move other elements when clicked
 React Native

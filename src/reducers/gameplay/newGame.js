@@ -6,5 +6,6 @@ export default function newGame(new_state, action)
     new_state.status.drugsDisplayed = null;
     new_state.status.travelled = false;  
     new_state.status.gameEnd.active = false;
+    new_state.status.news.active = false;
 	return new_state;
 }

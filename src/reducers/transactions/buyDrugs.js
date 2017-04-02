@@ -4,13 +4,26 @@ import userErrorNoDrugs from '../usererrors/userErrorNoDrugs';
 import userErrorNoFunds from '../usererrors/userErrorNoFunds';
 import userErrorNoSpace from '../usererrors/userErrorNoSpace';
 import userErrorQuantity from '../usererrors/userErrorQuantity';
+import resetUserError from '../usererrors/resetUserError';
 
-export default function buyDrugs(new_state, action)
-{
+export default function buyDrugs(new_state, action) {
     let foundDrug = false;
     let i;
 
     const drugsDisplayed = new_state.status.drugsDisplayed;
+    const playerDrugs = new_state.currentGame.currentDrugs;
+    let tooMuch = false;
+
+    // in the sell case
+    if (action.quantity < 0) {
+        for (let i = 0; i < playerDrugs.length; i++) {
+
+            // see how much of the drug the player has, if selling more than has, set tooMuch to true
+            if (playerDrugs[i].name === action.name && Math.abs(action.quantity) > playerDrugs[i].quantity) {
+                tooMuch = true;
+            }
+        }
+    }
 
     // Check our available space first
     const space = new_state.currentGame.currentSpace;
@@ -24,14 +37,10 @@ export default function buyDrugs(new_state, action)
     else {
         for (i = 0; i < drugsDisplayed.length; i++) {
 
-            console.log('Reducer names', drugsDisplayed[i]['name'], drugsDisplayed[i]['index'], action.name)
-
             if (drugsDisplayed[i].name === action.name || Number(drugsDisplayed[i].index) === Number(action.name)) {
 
-                console.log('Quantities', action.quantity, drugsDisplayed[i]['quantity'])
-
                 // Check if the input amount is less than the quantity on offer
-                if (action.quantity <= drugsDisplayed[i]['quantity']) {
+                if ((Math.abs(action.quantity) <= drugsDisplayed[i]['quantity']) && !tooMuch) { // in sell case, this needs to be compared against what the player owns
                     foundDrug = true;
 
                     const drugPrice = drugsDisplayed[i]['price'];
@@ -44,23 +53,25 @@ export default function buyDrugs(new_state, action)
                         // remove the quantity from the displayed drugs
                         drugsDisplayed[i]['quantity'] -= action.quantity;
 
-                        const playerDrugs = new_state.currentGame.currentDrugs;
                         let checker = false; // we'll use this to see if the player owns the drug
 
                         // Find the index of the drug from the drugStore
                         let drugIndex;
                         const drugStore = new_state.game.drugs;
-                        drugStore.forEach((value, index) => {
-                            if (value.name === action.name) {
-                                drugIndex = index;
+
+                        for (let i = 0; i < drugStore.length; i++) {
+
+                            if (drugStore[i].name === action.name || i === action.name) {
+                                drugIndex = i;
+                                break;
                             }
-                        });
+                        }
 
                         for (let i = 0; i < playerDrugs.length; i++) {
 
                             // check if the player owns this drug already
-                            if (playerDrugs[i] && playerDrugs[i]['name'] === drugIndex) {
-                                
+                            if (playerDrugs[i] && Number(playerDrugs[i]['name']) === drugIndex) {
+
                                 // set our checker
                                 checker = true;
 
@@ -76,7 +87,7 @@ export default function buyDrugs(new_state, action)
 
                         if (!checker) {
 
-                              // create the new drug and set the quantity in there
+                            // create the new drug and set the quantity in there
                             const newDrug = {
                                 name: drugIndex,
                                 quantity: action.quantity,
@@ -114,15 +125,25 @@ export default function buyDrugs(new_state, action)
                         // set the player's cash on new_state
                         new_state.currentGame.currentFinances.cash -= action.quantity * drugPrice;
 
+                        // remove any previous user users 
+                        new_state = resetUserError(new_state);
+
                         break;
                     } else {
 
                         // display error with insufficient funds
-                       new_state = userErrorNoFunds(new_state);
+                        new_state = userErrorNoFunds(new_state);
                     }
                 }
                 else {
-                    new_state = userErrorQuantity(new_state);
+
+                    // If the user attempted to sell more than what they have
+                    if (tooMuch) {
+                        new_state = userErrorQuantity(new_state, true);
+                    }
+                    else {
+                        new_state = userErrorQuantity(new_state);
+                    }
                 }
             }
             else if (!foundDrug && i === drugsDisplayed.length + 1) {
@@ -133,5 +154,5 @@ export default function buyDrugs(new_state, action)
         }
     }
 
-	return new_state;
+    return new_state;
 }

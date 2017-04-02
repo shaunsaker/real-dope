@@ -42,6 +42,9 @@ import makeLoan from './transactions/makeLoan';
 import userErrorNoFunds from './usererrors/userErrorNoFunds';
 import userErrorNoDrugs from './usererrors/userErrorNoDrugs';
 import userErrorBlank from './usererrors/userErrorBlank';
+import userErrorNegative from './usererrors/userErrorNegative';
+import userErrorNoSpace from './usererrors/userErrorNoSpace';
+import userErrorQuantity from './usererrors/userErrorQuantity';
 import resetUserError from './usererrors/resetUserError';
 
 export default function main(state = initialState, action) {
@@ -195,6 +198,30 @@ class reducerClass {
 
         // display user error when user cannot sell drugs at that location
         new_state = userErrorNoDrugs(new_state);
+
+        return new_state;
+    } 
+
+    static userErrorNoSpace(new_state) {
+
+        // display user error when user does not have enough space
+        new_state = userErrorNoSpace(new_state);
+
+        return new_state;
+    } 
+
+    static userErrorQuantity(new_state) {
+
+        // display user error when game does not have enough of a drug
+        new_state = userErrorQuantity(new_state);
+
+        return new_state;
+    } 
+
+    static userErrorNegative(new_state) {
+
+        // display user error when user attempted to buy/sell negative amount
+        new_state = userErrorNegative(new_state);
 
         return new_state;
     } 

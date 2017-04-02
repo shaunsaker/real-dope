@@ -1,9 +1,7 @@
 CURRENT TODO:
 
-Couldn't sell one drug
-Sell Max didn't update drugs available quantity
-Buying more drugs than are available
-Selling more drugs than I can - nothing happens
+Click events on buttons firing eratically - target correct elements
+
 Reloading on deal page
 Health buttons weren't working
 Health let me eventually buy when I didn't have the cash

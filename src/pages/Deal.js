@@ -44,13 +44,27 @@ export class Deal extends React.Component {
   }
 
   handleFinances(action, name, amount) {
+    this.props.dispatch({
+      type: "main." + action,
+      name: name,
+      quantity: amount
+    });
 
-    // Only dispatch action if we have a value, ie. field has not been left blank
-    if (amount) {
+    // reset form inputs
+    [...document.getElementsByTagName("input")].forEach(function (input) {
+      input.value = "";
+    });
+  }
+
+  buyDrugs(event) {
+    const inputAmount = Number(event.target.previousSibling.value);
+    const drugName = event.target.getAttribute("data-name");
+    if (inputAmount > 0) {
+      this.handleFinances("buyDrugs", drugName, inputAmount);
+    }
+    else {
       this.props.dispatch({
-        type: "main." + action,
-        name: name,
-        quantity: amount
+        type: "main.userErrorNegative",
       });
 
       // reset form inputs
@@ -58,26 +72,6 @@ export class Deal extends React.Component {
         input.value = "";
       });
     }
-
-    // Only dispatch if amount is not 0
-    else if (amount !== 0) {
-      this.props.dispatch({
-        type: 'main.userErrorBlank'
-      })
-    }
-
-    // Remove userError
-    else {
-      this.props.dispatch({
-        type: 'main.resetUserError'
-      })
-    }
-  }
-
-  buyDrugs(event) {
-    const inputAmount = Number(event.target.parentNode.previousSibling.value);
-    const drugName = event.target.parentNode.getAttribute("data-name");
-    this.handleFinances("buyDrugs", drugName, inputAmount);
   }
 
   buyMaxDrugs(event) {
@@ -90,9 +84,22 @@ export class Deal extends React.Component {
   }
 
   sellDrugs(event) {
-    const inputAmount = Number(event.target.parentNode.previousSibling.value) * -1;
-    const drugName = event.target.parentNode.getAttribute("data-name");
-    this.handleFinances("buyDrugs", drugName, inputAmount);
+    const inputAmount = Number(event.target.previousSibling.value) * -1;
+    const drugName = Number(event.target.getAttribute("data-name"));
+
+    if (inputAmount < 0) {
+      this.handleFinances("buyDrugs", drugName, inputAmount);
+    }
+    else {
+      this.props.dispatch({
+        type: "main.userErrorNegative",
+      });
+
+      // reset form inputs
+      [...document.getElementsByTagName("input")].forEach(function (input) {
+        input.value = "";
+      });
+    }
   }
 
   sellMaxDrugs(event) {

@@ -8,16 +8,15 @@ Signup and login need h3s to display clearly
 Need 'Game saved' display
 Firebase UserAuth and database don't match - rel to *A and *B
 Signout didn't display loader
-Splash logo anim buggy
-Page Transitions
-Button pushing => heights changing - quite irritating
 When saved, didn't save currentDrugs - try reproduce
+
+Page Transitions
 
 FUTURE TODO/ENHANCEMENTS:
 
 If more than 3 drugs available, let user know that they can scroll
 Animate icon in info-container when values changed
 Finances page - will you ever deposit all? Withdraw all?
-Reloading on deal page
 Buttons move other elements when clicked
+Splash logo anim buggy
 React Native

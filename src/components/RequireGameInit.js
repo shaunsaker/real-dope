@@ -18,7 +18,7 @@ export default function (WrappedComponent) {
     }
 
     render() {
-      return <WrappedComponent {...this.props} />
+      return this.props.drugsDisplayed ? <WrappedComponent {...this.props} /> : <div></div>
     }
   }
 

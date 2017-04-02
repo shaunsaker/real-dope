@@ -7,8 +7,6 @@ export default function buyHealth(new_state, action) {
     const points = action.health.points;
     const cost = price * points;
 
-    console.log(cost, currentCash);
-
     if (cost <= currentCash) {
 
         // set state of player.health

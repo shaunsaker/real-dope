@@ -1,0 +1,42 @@
+/* THEME STYLES */
+
+/* TEXT */
+
+.text-primary {
+    font-family: $font-logo;
+}
+
+.text-shadow {
+    text-shadow: 1px 1px 3px $grey;
+}
+
+.text-white {
+    color: $white;
+}
+
+.text-light {
+    color: $lightPrimary;
+}
+
+.text-dark {
+    color: $black;
+}
+
+.text-secondary {
+    font-family: $font-text;
+}
+
+.text-accent {
+    color: $secondary;
+}
+
+/* BACKGROUNDS */
+
+.bg-primary {
+    background-color: $primary;
+}
+
+.bg-dark {
+    background-color: $grey !important;
+    color: $lightPrimary !important;
+}

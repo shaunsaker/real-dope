@@ -2,6 +2,7 @@ CURRENT TODO:
 
 Click events on buttons firing eratically - target correct elements
 
+News event when I clicked New Game
 Reloading on deal page
 Health buttons weren't working
 Health let me eventually buy when I didn't have the cash

@@ -48,11 +48,24 @@ export class Guns extends React.Component {
   }
 
   buyAmmo(event) {
-    const inputAmount = Number(event.target.parentNode.previousSibling.value);
-    this.props.dispatch({
-      type: 'main.buyAmmo',
-      quantityRequested: inputAmount
-    })
+    const inputAmount = Number(event.target.previousSibling.value);
+
+    if (inputAmount > 0) {
+      this.props.dispatch({
+        type: 'main.buyAmmo',
+        quantityRequested: inputAmount
+      });
+    }
+    else {
+      this.props.dispatch({
+        type: 'main.userErrorNegative'
+      });
+    }
+
+    // reset form inputs
+    [...document.getElementsByTagName("input")].forEach(function (input) {
+      input.value = "";
+    });
   }
 
   buyMaxAmmo(event) {
@@ -85,7 +98,7 @@ export class Guns extends React.Component {
           </div>
           <div className="flex-1">
             <div className="weapons flex-vt-normal flex-stretch row">
-              <ElementsHeader text="Damage" icon="bolt" class="bg-dark"/>
+              <ElementsHeader text="Damage" icon="bolt" class="bg-dark" />
               {
                 this.props.weapons.map((item, index) => {
                   if (item.name !== this.props.currentWeapon) {
@@ -99,7 +112,7 @@ export class Guns extends React.Component {
               }
             </div>
             <div className="ammo flex-vt-normal flex-stretch row">
-              <ElementsHeader text="No." deal={true} icon="bullet" class="bg-dark"/>
+              <ElementsHeader text="No." deal={true} icon="bullet" class="bg-dark" />
               {
                 this.props.weapons.map((item, index) => {
                   if (item.name === this.props.currentWeapon && item.name !== 'Fists' && item.name !== 'Baseball Bat') {
@@ -111,11 +124,10 @@ export class Guns extends React.Component {
                         defaultStyle={{ left: -450, opacity: 0 }}
                         style={{ left: spring(0, presets.stiff), opacity: spring(1, presets.stiff) }}>
                         {(style) =>
-                          <div 
+                          <div
                             style={{ opacity: style.opacity, left: style.left }}
                             className="position-relative">
                             <AmmoElement name={item.name} ammo={this.props.ammo} key={index} handleClick={this.buyAmmo} handleBuyMax={this.buyMaxAmmo} />
-                            />
                           </div>
                         }
                       </Motion>
@@ -132,9 +144,9 @@ export class Guns extends React.Component {
             </div>
           </div>
           <Link to="/game" className="page-footer flex-vt-normal flex-center">
-              <Button bsSize="sm" bsStyle="primary">
-                  <p className="text-secondary text-light">Back</p>
-              </Button>
+            <Button bsSize="sm" bsStyle="primary">
+              <p className="text-secondary text-light">Back</p>
+            </Button>
           </Link>
         </div>
       </div>

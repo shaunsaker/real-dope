@@ -1,6 +1,8 @@
 CURRENT TODO:
 
 Clothing display looks weird with text-wrap
+I could sell max ammo
+After continue game (status) I was in a fight event
 
 MONITOR
 
